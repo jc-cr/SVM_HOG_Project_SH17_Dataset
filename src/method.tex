@@ -1,0 +1,42 @@
+\section{Method}
+
+For the implementation notebooks, the code in (plvs2023hogdetection) is used as a primary reference. 
+
+% Preprocessing
+
+The dataset splits the images into training and validation data along with their respective annotations. 
+The annotations are parsed so only the "person" annotation data is used.
+The images are loaded and converted to greyscale, though it's worth noting that (HOGpaper) found this conversion shows little performance improvements.
+
+The preparation of training data requires both positive and negative samples. 
+Positive samples are extracted from the annotated person bounding boxes and assigned a label value of 1, while negative samples are derived from image regions outside these boxes and assigned a label value of 0. 
+A sliding window approach generates feature extraction windows, using a fixed window size of (64, 128) pixels, which has been shown effective for person detection in previous studies
+Once a sampling window is calculated we then use the skimage HOG implementation to generate the feature data for that window.
+The HOG is 
+The process is repeated for all the person bounding boxes in the image and for non-person regions.
+
+An issue encountered by doing this is that without any limits on sample size we get a very large amount of negative samples for the dataset, greatly outnumbering the positive samples.
+This could potentiatliayy lead to overfittingm, but more practically this often caused the training notebook to crash as the more than 100 batch files were generated of a few GBs of size. 
+Initially a Linear Support Vector Classification (SVC)  was implemented for this training, but when the data batches were passed to the model for fitting, it would raise a memory input error. 
+At that point, I investigate alternative optimizer approaches and found 
+% (https://stackoverflow.com/a/48022399)
+thus a SGD optimizer was used instead -- this is discussed further in the Training section.
+In addition to the change of optimizer, a ratio of 5 negative to every positive sample was added to the sample generation to limit the number of negative samples.
+
+% Training
+
+For training, an sklearn pipeline is created using stochastic gradient descent (SGD) learning method and fit with a linear SVM. 
+
+As described in the preprocessing section, the large amount of samples resulted in a exceeding the memory capabilities in the original implementaion.
+Given the large amount of sample data available, the SGD optimizer method is chosen as recommended in the Sklearn guide 
+%(https://scikit-learn.org/1.4/tutorial/machine_learning_map/index.html#).
+
+The default parameters are used for training including a tolerance of 0.001 and a max iteration of 1000.
+During the model fitting step the max iterations were met, thus convergence was not achieved in our training. 
+Since SGD is sensitive to the feature scaling, the model inputs are scaled with the the standard scalar API of sklearn.
+
+In total, 6479 images were loaded as training data with the following output:
+Total features: 64990
+Positive samples: 10920
+Negative samples: 54070
+Feature dimension: 3780

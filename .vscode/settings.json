@@ -1,0 +1,60 @@
+{
+    "latex-workshop.latex.outDir": "../output",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "docker",
+            "args": [
+                "compose",
+                "-f",
+                "/home/jc/Workspace/ml_data_project_report/.docker/docker-compose.yml",
+                "--project-name",
+                "docker",
+                "exec",
+                "-T",
+                "latex",
+                "latexmk",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=/project/output",
+                "/project/src/main.tex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (in Docker)",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "browser",
+    "latex-workshop.docker.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.view.pdf.external.viewer.command": "xdg-open",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "docker",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "compose",
+        "-f",
+        "/home/jc/Workspace/ml_data_project_report/.docker/docker-compose.yml",
+        "--project-name",
+        "docker",
+        "exec",
+        "-T",
+        "latex",
+        "synctex",
+        "view",
+        "-i",
+        "%LINE%:%COLUMN%:%TEX%",
+        "-o",
+        "%PDF%",
+        "-x",
+        "xdg-open %PDF%#src:%LINE%%TEX%"
+    ]
+}

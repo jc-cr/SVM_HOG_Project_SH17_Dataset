@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+
+\bibitem{ahmad2024sh17datasethumansafety}
+Hafiz~Mughees Ahmad and Afshin Rahimi.
+\newblock Sh17: A dataset for human safety and personal protective equipment
+  detection in manufacturing industry, 2024.
+
+\bibitem{HOGpaper}
+N.~Dalal and B.~Triggs.
+\newblock Histograms of oriented gradients for human detection.
+\newblock In {\em 2005 IEEE Computer Society Conference on Computer Vision and
+  Pattern Recognition (CVPR'05)}, volume~1, pages 886--893 vol. 1, 2005.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{plvs2023hogdetection}
+Sam Plvs.
+\newblock Object detection via hog-svm, 2023.
+
+\bibitem{vanderwalt2014scikit}
+St{\'e}fan van~der Walt, Johannes~L. Sch{\"o}nberger, Juan Nunez-Iglesias,
+  Fran{\c{c}}ois Boulogne, Joshua~D. Warner, Neil Yager, Emmanuelle Gouillart,
+  Tony Yu, and {the scikit-image contributors}.
+\newblock scikit-image: Image processing in {Python}.
+\newblock {\em PeerJ}, 2:e453, 2014.
+
+\end{thebibliography}

@@ -1,0 +1,11 @@
+\section{Conclusion}
+
+In this report, the author wanted to compare traditional machine learning approaches to more modern deep learning methods.
+A linear SVM classifier with a SGD optimizer was chosen in this case, as linear SVM have previously been used in many successful applications of person object detection.
+Features from the images were extracted using the HOG approach.
+
+The final model performed extremely poorly when evaluated on the COCO object detection metrics. 
+From qualitative inspection of the resulting prediction boxes, the author notes that the predictions do tend to fall within the ground truth area but there still remain very high scoring outliers which indicate further model tuning, training and post processing steps for detection boxes are needed.
+
+\subsection{AI Use Disclaimer}
+Claude 3.5 Sonnet was used in code generation for this paper. Code was edited and verified by the author.
