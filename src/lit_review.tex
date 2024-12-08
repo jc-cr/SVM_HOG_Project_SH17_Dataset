@@ -2,16 +2,14 @@
 
 Object detection from images involves two tasks: object classification and object locating. 
 Both of these tasks involve the extraction of meaningful features from an image. 
-Various techniques exists in literature to determine feature sets from an image.
+In modern CNN approaches to object detection, the feature extraction tends to be layers within the models architecture \cite{reddi2024mlsystems}, while traditional computer vision approaches required engineered feature extraction methods.
 
-% Feature extraciton
-
-This paper uses the Histogram of Oriented Gradients (HOG) method which captures local gradient structures from images (1467360).
-Other approaches to extracting features include Scale-Invariant Feature Transform and Speeded Up Robust Features algorithms.
+One such feature extraction method is the Histogram of Oriented Gradients (HOG) method which captures local gradient structures from cells within an image \cite{HOGpaper}, in fact in their paper the authors show "essentially perfect" classification of pedestrians in a MIT prediction test set.
+Other popular feature extraction methods at the time included the Scale-Invariant Feature Transform (SIFT) method which captures local invariant features from an image \cite{lowe2004distinctive}.
 
 % Classification
+For the classification and detection tasks, different approaches to the learned Support Vector Machines (SVM) have been used.
+In \cite{papageorgiou2000trainable}, the authors detail a pedestrian detector based on a polynomial SVM using rectified Haar wavelets.
+A human limb classifier using a SVM and 1st and 2nd Gaussian features is developed in \cite{ronfard2002learning}.
 
-Once features have been extracted from an image various options exists for then using those features to make a prediction on new data. 
-Support Vector Machines (SVM) have commonly been used for this tasks as their able to efficiently classify higher dimensional data through the use of space transformations. 
-
-For a similar task of face detection, AdaBoost proved to be an effective method.
+Other previously used learning based approaches include works such as \cite{1238422}, where the authors build a person detector using AdaBoost and Haar-like features.

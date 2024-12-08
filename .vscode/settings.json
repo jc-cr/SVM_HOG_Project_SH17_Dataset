@@ -56,5 +56,8 @@
         "%PDF%",
         "-x",
         "xdg-open %PDF%#src:%LINE%%TEX%"
+    ],
+    "cSpell.words": [
+        "greyscale"
     ]
 }

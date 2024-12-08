@@ -1,14 +1,30 @@
 \section{Implementation}
 
-
-For the evaluation pipeline, the sliding window approach is again used but incorporates a image scaling pyramid to handle size variations of the target objects similar to that used in (plvs2023hogdetection).
+For the evaluation pipeline, the sliding window approach is again used but incorporates a image scaling pyramid to handle size variations of the target objects similar to that used in \cite{plvs2023hogdetection}.
 In the sliding window the HOG feature extractor method is again used with the same parameters as in the training step.
 
-The  trained SVM model provides confidence scores for each window using decision_function(), which returns the signed distance from the separating hyperplane, we then keep those above a certain threshold as detections.
+The  trained SVM model provides confidence scores for each window using decision function method, which returns the signed distance from the separating hyperplane, we then keep those above a certain threshold as detections.
 
-Without post-processing the above method generates many "positive" predictions as seen in Figure X. 
-This is problematic as each prediction is considered to be person thus negatively impacting the COCO metric calculations with the false positives. 
-To account for this, post processing methods are added to standardizes the detection aspect ratios, merge overlapping boxes, and the do a non-maximum suppression to keep only the highest scoring boxes.
+Without post processing, the model outputs a large amount of detection boxes which overlap and leads to multiple detections of the same object when using the Intersection over Union (IoU) metric as a threshold for positive and false positive detections.
+
+To account for this, post processing methods are added. 
+First, boxes are merged using a density-weighted averaging approach.
+Then the boxes are adjusted to maintain a reasonable aspect ratio.
+Finally, a non-maximum suppression step is applied to keep only the highest scoring boxes that don't significantly overlap.
+The results of a post processing step can be seen in Figure \ref{fig:post_process}.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{0_post.jpg}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{1_post.jpg}
+    \end{subfigure}
+    \caption{Example of post-processing results. Left: Raw detection windows with confidence scores above threshold. Right: Final detections after post processing.}
+    \label{fig:post_process}
+\end{figure}
+
+For the evaluation code, the author found a confidence threshold of 1000 to be suitable for accepting a prediction as a positive detection.
 It's worth noting that since the model used a scaler in it's pipeline, features with scores above 0.0 are considered within the "person" classification, while those below  0.0 are negative.
-
-After 2 post processing steps, the prediction boxes are consolidated and merged resulting in results such as Figure X.

@@ -1,7 +1,9 @@
 \section{Abstract}
 
 This paper implements and evaluates a traditional computer vision approach to object detection using Histogram of Oriented Gradients (HOG) features with Support Vector Machine (SVM) classification on a modern industrial safety dataset. 
+
 The SH17 dataset, containing 8,099 annotated images with 75,994 instances across 17 classes, is used to train and evaluate a person detector.
 A linear SVM with stochastic gradient descent optimization is implemented, processing 64,990 total features from 10,920 positive and 54,070 negative samples. 
-The model's performance is evaluated using COCO metrics and compared against modern YOLO architectures trained on the same dataset. 
-While the HOG-SVM approach achieved limited performance (mAP50: 1.1\%, mAP50-95: 1.0\%) compared to deep learning methods (best mAP50: 70.9\%, mAP50-95: 48.7\%), analysis of the detection boxes reveals that predictions tend to fall within ground truth areas, suggesting potential for improvement through enhanced post-processing and parameter tuning. 
+The model's performance is evaluated against YOLO8, YOLO9, and YOLO10 models from the SH17 paper.
+
+While the HOG-SVM approach achieved limited performance (mAP50: 0.4\%, mAP50-95: 0.2\%) compared to deep learning methods (best mAP50: 70.9\%, mAP50-95: 48.7\%), analysis of the detection boxes shows that our model's predictions tend to fall within ground truth areas, suggesting potential for improvement through enhanced post-processing and parameter tuning.

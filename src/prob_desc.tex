@@ -1,5 +1,8 @@
 \section{Problem Description}
 
 The SH17 dataset contains 8,099 annotated images with 75,994 instances across 17 classes. 
-A person detection model is then implemented using HOG features extraction method and a classified with a linear SVM model.
-The performance of the model is evaluated using COCO benchmarks and compared to benchmarks obtained in the the SH-17 paper which uses YOLO9 and YOLO10 architectures.
+From these classes, we aim to to develop a detection model for just the person class.
+The model will use a SVM classifier to classify features extracted with the HOG method as a person or not a person.
+
+The performance of the model will be evaluated using the benchmarks described in the SH-17 paper, including precision, recall, and mean average precision (mAP).
+Our model's performance will then be compared to benchmarks obtained in the SH17 paper for the YOLO8, YOLO9, and YOLO10 architectures. 

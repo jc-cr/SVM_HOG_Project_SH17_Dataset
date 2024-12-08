@@ -1,8 +1,7 @@
 \section{Introduction}
 
 Object detection is a core task in computer vision research and development. 
-Modern deep learning approaches like convolutional neural networks (CNN) have been the standard approach to object detection from RGB images since their capabilities for training with GPU hardware was demonstrated in 2012 (AlexNet).
-Since then architectures such as YOLO and ResNet have been shown to be highly performant towards this task.
+Modern deep learning approaches like convolutional neural networks (CNN) have been the standard approach to the object detection for RGB images ever since their capabilities for training with GPU hardware was demonstrated in 2012 \cite{alexnet}.
+Since then architectures such as YOLO \cite{yolo} and Faster R-CNN \cite{ren2016fasterrcnnrealtimeobject} have been developed to improve the speed and accuracy of object detection tasks.
 
-In this  report my goal is to take a look at previously common methods for approaching the object detection task and see how they perform compared to more modern approach. 
-This paper implements and evaluates a HOG-SVM based person detector on a recent work-environment focused dataset, the Safe Human dataset consisting of 17 different objects (SH17) \cite{ahmad2024sh17datasethumansafety}.
+In this  report my goal is to evaluate the performance of a more traditional object detection approach, the Histogram of Oriented Gradients (HOG) combined with a Support Vector Machine (SVM) classifier, on a recent dataset, the Safe Human dataset, a workplace safety dataset with 17 different objects \cite{ahmad2024sh17datasethumansafety}.
