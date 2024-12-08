@@ -60,15 +60,16 @@ The top performing model is bolded.
         Yolo-10-l & 24.4 & 1620 & 15358 & 76.0 & 61.8 & 67.4 & 46.0 \\ \hline
         Yolo-10-x & 29.5 & 1620 & 15358 & 76.8 & 62.8 & 67.8 & 46.7 \\ \hline
     \end{tabularx}
-    \caption{Model performance comparison} 
+    \caption{Model performance comparison between the HOG-SVM model and the YOLO models from the SH17 paper \cite{ahmad2024sh17datasethumansafety}.}
     \label{tab:results}
 \end{table}
 
 
 \subsection{Discussion}
 
-From evaluating a few samples of the model's predictions, it was observed that our model would fall below the 0.5 IoU threshold, which is the minimum threshold for a detection to be considered a true positive, thus the model's performance was extremely poor on using COCO evaluation metrics.
+From evaluating a few samples of the model's predictions, it was observed that our model would fall below the 0.5 IoU threshold, which is the minimum threshold for a detection to be considered a true positive.
+Thus the model's performance was extremely poor on using COCO evaluation metrics.
 
 As described in the previous section, steps were taken in the implementation to merge the multiple prediction boxes into a more representative single box per person class, which would potentially improve the IoU value with respect to the ground truth boxes.
-In improving the IoU value, we could see more true positives being detected, which would improve the precision and recall values of the model.
+In improving the IoU value, we could potentially see more true positives being detected, which would improve the precision and recall values of the model.
 In addition hyper parameter tuning for the SGD optimizer could be done in training, but these improvements are beyond the scope of this project.
